@@ -101,10 +101,8 @@ resource "aws_instance" "webserver" {
               #!/bin/bash
               yum update -y $> root/status.txt
               echo "\n-------------------------------------\n" >> root/status.txt
-              yum install -y yum-utils device-mapper-persistent-data lvm2 &>> /root/status.txt
               yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm &>> /root/status.txt
-              yum install -y git unzip python3 python-pip ansible &>> /root/status.txt
-              ln -s /usr/bin/python3.6 /usr/bin/python &>> /root/status.txt
+              yum install -y git ansible &>> /root/status.txt
               git clone https://github.com/kabirg/sayari.git /root/sayari-codebase &>> /root/status.txt
               echo "\n-------------------------------------\n" >> root/status.txt
               ansible-playbook /root/sayari-codebase/ansible/main.yml -i /root/sayari-codebase/ansible/inventory &>> /root/status.txt
