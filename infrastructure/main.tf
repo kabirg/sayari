@@ -105,11 +105,11 @@ resource "aws_instance" "webserver" {
               yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm &>> /root/status.txt
               yum install -y git unzip python3 python-pip ansible &>> /root/status.txt
               ln -s /usr/bin/python3.6 /usr/bin/python &>> /root/status.txt
-              git clone https://github.com/kabirg/sayari.git /home/ec2-user/sayari-codebase
-              chown -R ec2-user /home/ec-2user/sayari-codebase
-              chgrp -R ec2-user /home/ec-2user/sayari-codebase
+              git clone https://github.com/kabirg/sayari.git /root/sayari-codebase &>> /root/status.txt
               echo "\n-------------------------------------\n" >> root/status.txt
-              ansible-playbook sayari-codebase/ansible/main.yml -i sayari-codebase/ansible/inventory
+              ansible-playbook /root/sayari-codebase/ansible/main.yml -i /root/sayari-codebase/ansible/inventory &>> /root/status.txt
+              # Allow new group to take effect (can't reboot or reset-connection within Ansible if using localhost connection)
+              newgrp docker &>> /root/status.txt
               echo "userdata script complete!" > /root/userdata_status.txt
               EOF
 }
