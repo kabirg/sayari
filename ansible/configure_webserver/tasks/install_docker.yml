@@ -70,7 +70,6 @@
       groups: docker
 
   - name: Apply group update
-    become: yes
     become_user: ec2-user
     shell: newgrp docker
 
