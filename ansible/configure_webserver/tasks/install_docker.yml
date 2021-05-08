@@ -72,15 +72,3 @@
   - name: Apply group update
     become_user: ec2-user
     shell: newgrp docker
-
-  # - name: reset ssh connection to allow user changes to affect ansible user
-  #   ansible.builtin.meta:
-  #     reset_connection
-  # - name: Reboot a Machine to allow ec2-user to execute Docker commands
-  #   become: yes
-  #   become_user: root
-  #   reboot:
-  #     reboot_timeout: 3600
-  #
-  # - name: Restart Docker Service to Apply Config Updates
-  #   meta: flush_handlers

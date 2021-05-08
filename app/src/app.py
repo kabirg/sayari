@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return f"Welcome to Flask App. Routes available: /now and /version"
+    return f"Welcome to my Sayari Flask App. Routes available: /now and /version"
 
 
 @app.route('/now')
