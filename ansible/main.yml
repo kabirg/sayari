@@ -1,0 +1,4 @@
+---
+- hosts: machines
+  roles:
+  - configure_webserver
