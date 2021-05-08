@@ -69,6 +69,11 @@
       append: yes
       groups: docker
 
+  - name: Apply group update
+    become: yes
+    become_user: ec2-user
+    shell: newgrp docker
+
   # - name: reset ssh connection to allow user changes to affect ansible user
   #   ansible.builtin.meta:
   #     reset_connection
