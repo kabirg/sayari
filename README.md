@@ -3,14 +3,14 @@
 ### HOW-TO: Provision Terraform Infrastructure
 - Clone down the repository (`git clone https://github.com/kabirg/sayari.git`)
 - `cd` into the *infrastructure* directory.
-- Modify the *terraform.tfvars* file if you want to use any CIDR other than the pre-configured CIDR's.
-- Optional: set the *ec2_keypair* variable with the name of a pre-existing EC2 keypair. If you skip this, then you'll just be prompted for it during the subsequent _apply_ command.
+- *Optional:* Modify the *terraform.tfvars* file if you want to use any CIDR other than the pre-configured CIDR's.
+- *Optional:*: set a value for *ec2_keypair* within *terraform.tfvars* with the name of a pre-existing EC2 keypair. If you skip this, you'll just be prompted for it during the subsequent _apply_ command.
 - Set your AWS credentials (either as environment variables or in the *~/.aws/credentials* file)
 - Run the following:
 `terraform init`
 `terraform apply`
-- Wait a few minutes for the user_data/ansible-playbook to complete execution (if you SSH into the instance, you can view the */root/status.txt* file to see the progress of the user_data script).
-- _*Note:*_ If you are unable to run docker commands as 'ec2-user' after the user_data script is complete, reboot the machine.
+- Wait a few minutes for the user_data and Ansible playbook to complete execution (if you SSH into the instance, you can view the */root/status.txt* file to see the progress of the user_data script).
+- *Note:* If you are unable to run docker commands as 'ec2-user' after the user_data script is complete, reboot the machine.
 
 ### HOW-TO: Build the Flask App (as a container) and Deploy
 - `cd` into the *app* directory.
