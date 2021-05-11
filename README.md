@@ -4,8 +4,9 @@
 - Clone down the repository (`git clone https://github.com/kabirg/sayari.git`)
 - Set your AWS credentials (either as environment variables or in the *~/.aws/credentials* file)
 - `cd` into the *infrastructure* directory.
-- **Optional:** Modify the *terraform.tfvars* file if you want to use any CIDR other than the pre-configured CIDR's.
-- **Optional:** set a value for *ec2_keypair* within *terraform.tfvars* with the name of a pre-existing EC2 keypair. If you skip this, you'll just be prompted for it during the subsequent _apply_ command.
+> - **Optional:** Modify the *terraform.tfvars* file if you want to use any CIDR other than the pre-configured CIDR's.
+> - **Optional:** set a value for *ec2_keypair* within *terraform.tfvars* with the name of a pre-existing EC2 keypair. If you skip this, you'll just be prompted for it during the subsequent _apply_ command.
+
 - Run the following:
 `terraform init`\
 `terraform apply`
