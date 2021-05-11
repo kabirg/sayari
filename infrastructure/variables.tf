@@ -6,7 +6,7 @@ variable "vpc_cidr" {
   type = string
 }
 
-variable "public_subnets" {
+variable "public_subnet_cidr" {
   type = string
 }
 

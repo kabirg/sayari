@@ -13,7 +13,7 @@ resource "aws_vpc" "main" {
 
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = aws_vpc.main.id
-  cidr_block              = var.public_subnets
+  cidr_block              = var.public_subnet_cidr
   map_public_ip_on_launch = true
 
   tags = {
@@ -40,9 +40,9 @@ resource "aws_security_group" "webserver_sg" {
   }
 
   ingress {
-    from_port       = 22
-    to_port         = 22
-    protocol        = "tcp"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -89,7 +89,7 @@ resource "aws_instance" "webserver" {
   }
 
   # Install required software: Ansible, Git and Python/Pip
-  # Use Ansible Playbook to Install/Configure Docker and Run the application/webserver
+  # Use Ansible Playbook to Install/Configure Docker.
   user_data = <<-EOF
               #!/bin/bash
               yum update -y $> root/status.txt

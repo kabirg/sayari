@@ -1,17 +1,20 @@
-# pip install requests to run this scrip in your local
 import requests
+from sys import argv
 
-# Edit this with the domain/ip of the VCS with port separated by colon (if ip used)
-# Sample http://0.0.0.0:8000 or https://subdomain.domain
-domain = "http://localhost:8080"
+def main(server):
+    domain = "http://{server}:5000".format(server=server)
+    url = f'{domain}/version'
 
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            print("Server is up and returned an HTTP status of: {code}".format(code=response.status_code))
+        else:
+            print("Uh oh..! The server is down")
+    except Exception as e:
+        print("Uh oh..! The server is down")
+        print(e.message)
 
-url = f'{domain}/now'
-try:
-    resp = requests.get(url)
-    if resp.status_code == 200:
-        print(f"server is up and returned: `{resp.text}`")
-    else:
-        print("uh oh..! The server is down")
-except Exception:
-    print("uh oh..! The server is down")
+if __name__ == '__main__':
+    server = argv[1]
+    app = main(server)
