@@ -38,12 +38,12 @@ Enter `<public_ip>:5000/<endpoint>` into a browser or `curl` it from a command l
 
 ### HOW-TO: Update the App with a New Version
 - After making your updates to the application, update the `current_version` variable at the top of `app.py`. Commit to Git repo if you're using source control.
-- Once ready to be pushed, build the new container (and tag it with a version that matches what you set in `app.py`):
+- Once ready to be pushed, build the new container (and tag it with a version that matches what you set in `app.py`):\
   `docker build -t kabirgupta3/sayari-flask-app:v2.0 .`
-- Within the webserver, stop the old container:
-  `docker stop flask-app`
+- Within the webserver, stop the old container:\
+  `docker stop flask-app`\
   `docker rm flask-app`
-- Deploy the new container:
+- Deploy the new container:\
   `docker run -d -p 5000:5000 --name flask-app-v2 kabirgupta3/sayari-flask-app:v2.0`
 
 ### Notes, Assumptions, Improvements
