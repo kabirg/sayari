@@ -5,7 +5,7 @@
 - Set your AWS credentials (either as environment variables or in the *~/.aws/credentials* file)
 - `cd` into the *infrastructure* directory.
 - **Optional:** Modify the *terraform.tfvars* file if you want to use any CIDR other than the pre-configured CIDR's.
-- **Optional:**: set a value for *ec2_keypair* within *terraform.tfvars* with the name of a pre-existing EC2 keypair. If you skip this, you'll just be prompted for it during the subsequent _apply_ command.
+- **Optional:** set a value for *ec2_keypair* within *terraform.tfvars* with the name of a pre-existing EC2 keypair. If you skip this, you'll just be prompted for it during the subsequent _apply_ command.
 - Run the following:
 `terraform init`\
 `terraform apply`
@@ -38,7 +38,6 @@ Enter `<public_ip>:5000/<endpoint>` into a browser or `curl` it from a command l
 
 ### HOW-TO: Update the App with a New Version
 - After making your updates to the application, update the `current_version` variable at the top of `app.py`. Commit to Git repo if you're using source control.
-  -
 - Once ready to be pushed, build the new container (and tag it with a version that matches what you set in `app.py`):
   `docker build -t kabirgupta3/sayari-flask-app:v2.0 .`
 - Within the webserver, stop the old container:
